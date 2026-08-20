@@ -6,7 +6,7 @@
     <title>MFTIK — Your own trading instance</title>
     <meta
       name="description"
-      content="A mid-frequency algo trading platform. One owner. One isolated instance. Paper trading, strategy deploy, control UI."
+      content="Mid-frequency algo trading. Self-host free, or claim a hosted instance for $30/month. Paper trading, strategy deploy, control UI."
     />
     <link rel="canonical" href="https://mftik.com/" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,7 +20,11 @@
   <body>
     <header class="top">
       <a class="mark" href="/">MFTIK</a>
-      <span class="top-note">instances on mftik.app</span>
+      <nav>
+        <a href="#pricing">Pricing</a>
+        <a href="#demo">Request demo</a>
+        <a href="#support">Support</a>
+      </nav>
     </header>
 
     <main>
@@ -28,60 +32,110 @@
         <p class="eyebrow">Mid-frequency algo trading</p>
         <h1>Your own instance.<br />Nobody else on it.</h1>
         <p class="lead">
-          Paper trading, strategy deploy, and the control UI — on a box that is
-          only yours. Pick a name. That name becomes your address.
+          Paper trading, strategy deploy, and the control UI. Run it yourself,
+          or we run a box that is only yours.
         </p>
-
-        <form class="claim" action="#" method="get" onsubmit="return false">
-          <label class="sr" for="slug">Instance name</label>
-          <div class="claim-row">
-            <input
-              id="slug"
-              name="slug"
-              type="text"
-              autocomplete="off"
-              spellcheck="false"
-              maxlength="32"
-              placeholder="your-name"
-              value="your-name"
-            />
-            <span class="suffix">.mftik.app</span>
-          </div>
-          <p class="preview">
-            Your instance would be
-            <code id="preview">your-name.mftik.app</code>
-          </p>
-          <button type="button" id="cta" disabled>
-            Request access
-            <span class="soon">signup isn’t open yet</span>
-          </button>
-        </form>
+        <div class="hero-actions">
+          <a class="btn" href="#pricing">See plans</a>
+          <a class="btn secondary" href="#demo">Request demo</a>
+        </div>
       </section>
 
-      <section class="grid">
-        <article>
-          <h2>What you get first</h2>
-          <p>
-            A claimed instance with paper trading, strategy deploy, and the
-            control UI. One region (Asia Pacific). One public plan. No quote
-            calculator.
-          </p>
-        </article>
-        <article>
-          <h2>How it is sold</h2>
-          <p>
-            You buy a box, not a seat in a shared app. Billing sits above the
-            instance. The instance itself still has one owner — the person who
-            claims it.
-          </p>
-        </article>
-        <article>
-          <h2>What comes later</h2>
-          <p>
-            Teammates, live venue keys, extra regions, and bigger machines.
-            Those are a separate quote. They are not on this page.
-          </p>
-        </article>
+      <section id="pricing" class="pricing">
+        <h2>Plans</h2>
+        <p class="section-lead">Start on your machine. Pay when you want us to host it.</p>
+        <div class="plans">
+          <article class="plan">
+            <h3>Self-host</h3>
+            <p class="price">Free</p>
+            <p class="plan-copy">
+              The same platform, on your hardware. You keep the keys, the
+              data, and the ops.
+            </p>
+            <ul>
+              <li>Paper trading and strategy deploy</li>
+              <li>Control UI</li>
+              <li>You run the stack</li>
+            </ul>
+            <a class="btn secondary" href="https://github.com/lynxlinkage/mftik">Get the repo</a>
+          </article>
+
+          <article class="plan featured">
+            <h3>Claim an instance</h3>
+            <p class="price">$30 <span>per month</span></p>
+            <p class="plan-copy">
+              We run it. You pick a name. That name becomes your address.
+            </p>
+            <ul>
+              <li>Hosted in Asia Pacific</li>
+              <li>One owner, one box</li>
+              <li>Paper, strategies, control UI</li>
+            </ul>
+            <form class="claim" action="#" method="get" onsubmit="return false">
+              <label class="sr" for="slug">Instance name</label>
+              <div class="claim-row">
+                <input
+                  id="slug"
+                  name="slug"
+                  type="text"
+                  autocomplete="off"
+                  spellcheck="false"
+                  maxlength="32"
+                  placeholder="your-name"
+                  value="your-name"
+                />
+                <span class="suffix">.mftik.app</span>
+              </div>
+              <p class="preview">
+                Your instance would be
+                <code id="preview">your-name.mftik.app</code>
+              </p>
+              <button type="button" id="cta" disabled>
+                Request access
+                <span class="soon">signup isn’t open yet</span>
+              </button>
+            </form>
+          </article>
+
+          <article class="plan">
+            <h3>Custom</h3>
+            <p class="price">Contact us</p>
+            <p class="plan-copy">
+              Extra regions, seats, live venue keys, or a box that does not
+              look like the public plan.
+            </p>
+            <ul>
+              <li>Quoted separately</li>
+              <li>Not self-serve</li>
+              <li>Talk first</li>
+            </ul>
+            <a class="btn secondary" href="#demo">Contact us</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="demo" class="block">
+        <h2>Request a demo</h2>
+        <p>
+          We’ll walk through a hosted instance: claim, paper, deploy a
+          strategy, and the control UI. Signup is not open yet — this is a
+          conversation, not a checkout.
+        </p>
+        <p class="muted">
+          No inbox is wired on this page yet. Open a thread on
+          <a href="https://github.com/lynxlinkage/mftik/issues">the repo</a>
+          and say you want a demo, or wait until we put an address here.
+        </p>
+      </section>
+
+      <section id="support" class="block">
+        <h2>Support</h2>
+        <p>
+          Self-host questions belong on
+          <a href="https://github.com/lynxlinkage/mftik/issues">GitHub issues</a>.
+          Hosted instances will get a support path when the first one is
+          claimed. Until then, same place.
+        </p>
       </section>
     </main>
 
