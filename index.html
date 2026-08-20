@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MFTIK — Your own trading instance</title>
+    <meta
+      name="description"
+      content="A mid-frequency algo trading platform. One owner. One isolated instance. Paper trading, strategy deploy, control UI."
+    />
+    <link rel="canonical" href="https://mftik.com/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="top">
+      <a class="mark" href="/">MFTIK</a>
+      <span class="top-note">instances on mftik.app</span>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Mid-frequency algo trading</p>
+        <h1>Your own instance.<br />Nobody else on it.</h1>
+        <p class="lead">
+          Paper trading, strategy deploy, and the control UI — on a box that is
+          only yours. Pick a name. That name becomes your address.
+        </p>
+
+        <form class="claim" action="#" method="get" onsubmit="return false">
+          <label class="sr" for="slug">Instance name</label>
+          <div class="claim-row">
+            <input
+              id="slug"
+              name="slug"
+              type="text"
+              autocomplete="off"
+              spellcheck="false"
+              maxlength="32"
+              placeholder="your-name"
+              value="your-name"
+            />
+            <span class="suffix">.mftik.app</span>
+          </div>
+          <p class="preview">
+            Your instance would be
+            <code id="preview">your-name.mftik.app</code>
+          </p>
+          <button type="button" id="cta" disabled>
+            Request access
+            <span class="soon">signup isn’t open yet</span>
+          </button>
+        </form>
+      </section>
+
+      <section class="grid">
+        <article>
+          <h2>What you get first</h2>
+          <p>
+            A claimed instance with paper trading, strategy deploy, and the
+            control UI. One region (Asia Pacific). One public plan. No quote
+            calculator.
+          </p>
+        </article>
+        <article>
+          <h2>How it is sold</h2>
+          <p>
+            You buy a box, not a seat in a shared app. Billing sits above the
+            instance. The instance itself still has one owner — the person who
+            claims it.
+          </p>
+        </article>
+        <article>
+          <h2>What comes later</h2>
+          <p>
+            Teammates, live venue keys, extra regions, and bigger machines.
+            Those are a separate quote. They are not on this page.
+          </p>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <span>mftik.com</span>
+      <span class="dot">·</span>
+      <span>instances at *.mftik.app</span>
+    </footer>
+
+    <script>
+      const input = document.getElementById("slug");
+      const preview = document.getElementById("preview");
+
+      function slugify(value) {
+        return value
+          .toLowerCase()
+          .replace(/[^a-z0-9-]+/g, "-")
+          .replace(/^-+|-+$/g, "")
+          .slice(0, 32);
+      }
+
+      function render() {
+        const slug = slugify(input.value) || "your-name";
+        preview.textContent = slug + ".mftik.app";
+      }
+
+      input.addEventListener("input", render);
+      render();
+    </script>
+  </body>
+</html>
