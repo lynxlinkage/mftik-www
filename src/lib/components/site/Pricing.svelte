@@ -99,9 +99,10 @@
 				</Card.Header>
 				<Card.Content class="flex-1 space-y-3">
 					<ul class="mb-4 space-y-2 text-sm text-muted-foreground">
-						<li>Hosted in Asia Pacific</li>
-						<li>One owner, one box</li>
-						<li>Paper, strategies, control UI</li>
+						<li>Hosted in Asia Pacific · one owner, one box</li>
+						<li>Scheduled strategies from the MFTIK team</li>
+						<li>4-core / 8GB server</li>
+						<li>We operate it and ship version updates</li>
 					</ul>
 					<form class="space-y-3" onsubmit={onClaim}>
 						<div class="space-y-1.5">
@@ -170,15 +171,15 @@
 					<Card.Title class="font-mono text-sm tracking-[0.12em] uppercase">Custom</Card.Title>
 					<p class="font-mono text-2xl text-foreground">Contact us</p>
 					<Card.Description>
-						For teams that need a footprint beyond the public plan — regions, seats, live venue keys.
-						Talk first.
+						For companies that need ops shaped to their footprint, and strategies built for their
+						book. Talk first.
 					</Card.Description>
 				</Card.Header>
 				<Card.Content class="flex-1">
 					<ul class="space-y-2 text-sm text-muted-foreground">
-						<li>Quoted separately</li>
-						<li>Not self-serve</li>
-						<li>Talk first</li>
+						<li>Customized ops — VPC and/or distributed deploy</li>
+						<li>We help customize the strategies you need</li>
+						<li>Quoted separately · not self-serve</li>
 					</ul>
 				</Card.Content>
 				<Card.Footer>
