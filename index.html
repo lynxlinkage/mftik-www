@@ -22,8 +22,8 @@
       <a class="mark" href="/">MFTIK</a>
       <nav>
         <a href="#pricing">Pricing</a>
-        <a href="#demo">Request demo</a>
-        <a href="#support">Support</a>
+        <a href="mailto:eddy@lynxlinkage.com?subject=MFTIK%20demo">Request demo</a>
+        <a href="mailto:eddy@lynxlinkage.com?subject=MFTIK%20support">Support</a>
       </nav>
     </header>
 
@@ -37,7 +37,7 @@
         </p>
         <div class="hero-actions">
           <a class="btn" href="#pricing">See plans</a>
-          <a class="btn secondary" href="#demo">Request demo</a>
+          <a class="btn secondary" href="mailto:eddy@lynxlinkage.com?subject=MFTIK%20demo">Request demo</a>
         </div>
       </section>
 
@@ -71,7 +71,7 @@
               <li>One owner, one box</li>
               <li>Paper, strategies, control UI</li>
             </ul>
-            <form class="claim" action="#" method="get" onsubmit="return false">
+            <div class="claim">
               <label class="sr" for="slug">Instance name</label>
               <div class="claim-row">
                 <input
@@ -90,11 +90,8 @@
                 Your instance would be
                 <code id="preview">your-name.mftik.app</code>
               </p>
-              <button type="button" id="cta" disabled>
-                Request access
-                <span class="soon">signup isn’t open yet</span>
-              </button>
-            </form>
+              <a class="btn cta" id="cta" href="mailto:eddy@lynxlinkage.com?subject=MFTIK%20access">Request access</a>
+            </div>
           </article>
 
           <article class="plan">
@@ -109,7 +106,7 @@
               <li>Not self-serve</li>
               <li>Talk first</li>
             </ul>
-            <a class="btn secondary" href="#demo">Contact us</a>
+            <a class="btn secondary" href="mailto:eddy@lynxlinkage.com?subject=MFTIK%20custom">Contact us</a>
           </article>
         </div>
       </section>
@@ -118,23 +115,18 @@
         <h2>Request a demo</h2>
         <p>
           We’ll walk through a hosted instance: claim, paper, deploy a
-          strategy, and the control UI. Signup is not open yet — this is a
-          conversation, not a checkout.
-        </p>
-        <p class="muted">
-          No inbox is wired on this page yet. Open a thread on
-          <a href="https://github.com/lynxlinkage/mftik/issues">the repo</a>
-          and say you want a demo, or wait until we put an address here.
+          strategy, and the control UI. Write
+          <a href="mailto:eddy@lynxlinkage.com?subject=MFTIK%20demo">eddy@lynxlinkage.com</a>.
         </p>
       </section>
 
       <section id="support" class="block">
         <h2>Support</h2>
         <p>
-          Self-host questions belong on
+          Self-host questions can still go on
           <a href="https://github.com/lynxlinkage/mftik/issues">GitHub issues</a>.
-          Hosted instances will get a support path when the first one is
-          claimed. Until then, same place.
+          Everything else:
+          <a href="mailto:eddy@lynxlinkage.com?subject=MFTIK%20support">eddy@lynxlinkage.com</a>.
         </p>
       </section>
     </main>
@@ -146,8 +138,10 @@
     </footer>
 
     <script>
+      const MAIL = "eddy@lynxlinkage.com";
       const input = document.getElementById("slug");
       const preview = document.getElementById("preview");
+      const cta = document.getElementById("cta");
 
       function slugify(value) {
         return value
@@ -159,7 +153,13 @@
 
       function render() {
         const slug = slugify(input.value) || "your-name";
-        preview.textContent = slug + ".mftik.app";
+        const host = slug + ".mftik.app";
+        preview.textContent = host;
+        const subject = encodeURIComponent("MFTIK access: " + host);
+        const body = encodeURIComponent(
+          "I would like to claim " + host + " ($30/month hosted instance)."
+        );
+        cta.href = "mailto:" + MAIL + "?subject=" + subject + "&body=" + body;
       }
 
       input.addEventListener("input", render);
