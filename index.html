@@ -22,8 +22,8 @@
       <a class="mark" href="/">MFTIK</a>
       <nav>
         <a href="#pricing">Pricing</a>
-        <a href="mailto:eddy@lynxlinkage.com?subject=MFTIK%20demo">Request demo</a>
-        <a href="mailto:eddy@lynxlinkage.com?subject=MFTIK%20support">Support</a>
+        <a href="#contact">Request demo</a>
+        <a href="#contact">Support</a>
       </nav>
     </header>
 
@@ -37,7 +37,7 @@
         </p>
         <div class="hero-actions">
           <a class="btn" href="#pricing">See plans</a>
-          <a class="btn secondary" href="mailto:eddy@lynxlinkage.com?subject=MFTIK%20demo">Request demo</a>
+          <a class="btn secondary" href="#contact">Request demo</a>
         </div>
       </section>
 
@@ -71,7 +71,7 @@
               <li>One owner, one box</li>
               <li>Paper, strategies, control UI</li>
             </ul>
-            <div class="claim">
+            <form class="claim" id="claim-form">
               <label class="sr" for="slug">Instance name</label>
               <div class="claim-row">
                 <input
@@ -83,6 +83,7 @@
                   maxlength="32"
                   placeholder="your-name"
                   value="your-name"
+                  required
                 />
                 <span class="suffix">.mftik.app</span>
               </div>
@@ -90,8 +91,11 @@
                 Your instance would be
                 <code id="preview">your-name.mftik.app</code>
               </p>
-              <a class="btn cta" id="cta" href="mailto:eddy@lynxlinkage.com?subject=MFTIK%20access">Request access</a>
-            </div>
+              <input id="claim-name" name="name" type="text" minlength="2" maxlength="120" placeholder="Your name" required />
+              <input id="claim-email" name="email" type="email" maxlength="254" placeholder="you@example.com" required />
+              <button type="submit" class="btn cta" id="cta">Request access</button>
+              <p class="form-status" id="claim-status" hidden></p>
+            </form>
           </article>
 
           <article class="plan">
@@ -106,28 +110,25 @@
               <li>Not self-serve</li>
               <li>Talk first</li>
             </ul>
-            <a class="btn secondary" href="mailto:eddy@lynxlinkage.com?subject=MFTIK%20custom">Contact us</a>
+            <a class="btn secondary" href="#contact">Contact us</a>
           </article>
         </div>
       </section>
 
-      <section id="demo" class="block">
-        <h2>Request a demo</h2>
+      <section id="contact" class="block">
+        <h2>Contact</h2>
         <p>
-          We’ll walk through a hosted instance: claim, paper, deploy a
-          strategy, and the control UI. Write
-          <a href="mailto:eddy@lynxlinkage.com?subject=MFTIK%20demo">eddy@lynxlinkage.com</a>.
-        </p>
-      </section>
-
-      <section id="support" class="block">
-        <h2>Support</h2>
-        <p>
-          Self-host questions can still go on
+          Demo, support, or a custom box. Self-host questions can still go on
           <a href="https://github.com/lynxlinkage/mftik/issues">GitHub issues</a>.
-          Everything else:
-          <a href="mailto:eddy@lynxlinkage.com?subject=MFTIK%20support">eddy@lynxlinkage.com</a>.
         </p>
+        <form class="contact" id="contact-form">
+          <input name="name" type="text" minlength="2" maxlength="120" placeholder="Your name" required />
+          <input name="email" type="email" maxlength="254" placeholder="you@example.com" required />
+          <input name="company" type="text" maxlength="200" placeholder="Company (optional)" />
+          <textarea name="message" minlength="3" maxlength="5000" rows="5" placeholder="What do you need?" required></textarea>
+          <button type="submit" class="btn">Send</button>
+          <p class="form-status" id="contact-status" hidden></p>
+        </form>
       </section>
     </main>
 
@@ -138,10 +139,9 @@
     </footer>
 
     <script>
-      const MAIL = "eddy@lynxlinkage.com";
-      const input = document.getElementById("slug");
+      const CONTACT_URL = "https://lynxlinkage.com/api/v1/contact";
+      const slugInput = document.getElementById("slug");
       const preview = document.getElementById("preview");
-      const cta = document.getElementById("cta");
 
       function slugify(value) {
         return value
@@ -151,19 +151,65 @@
           .slice(0, 32);
       }
 
-      function render() {
-        const slug = slugify(input.value) || "your-name";
-        const host = slug + ".mftik.app";
-        preview.textContent = host;
-        const subject = encodeURIComponent("MFTIK access: " + host);
-        const body = encodeURIComponent(
-          "I would like to claim " + host + " ($30/month hosted instance)."
-        );
-        cta.href = "mailto:" + MAIL + "?subject=" + subject + "&body=" + body;
+      function host() {
+        return (slugify(slugInput.value) || "your-name") + ".mftik.app";
       }
 
-      input.addEventListener("input", render);
+      function render() {
+        preview.textContent = host();
+      }
+
+      async function submitContact(payload, statusEl) {
+        statusEl.hidden = false;
+        statusEl.textContent = "Sending…";
+        try {
+          const res = await fetch(CONTACT_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+          if (!res.ok) {
+            const data = await res.json().catch(() => ({}));
+            throw new Error(data.error || "Could not send");
+          }
+          statusEl.textContent = "Sent. We’ll write back.";
+        } catch (err) {
+          statusEl.textContent = err.message || "Could not send";
+        }
+      }
+
+      slugInput.addEventListener("input", render);
       render();
+
+      document.getElementById("claim-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const name = document.getElementById("claim-name").value.trim();
+        const email = document.getElementById("claim-email").value.trim();
+        submitContact(
+          {
+            name: name,
+            email: email,
+            message: "Request access for " + host() + " ($30/month hosted instance).",
+            kind: "mftik",
+          },
+          document.getElementById("claim-status")
+        );
+      });
+
+      document.getElementById("contact-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const form = e.target;
+        submitContact(
+          {
+            name: form.name.value.trim(),
+            email: form.email.value.trim(),
+            company: form.company.value.trim(),
+            message: form.message.value.trim(),
+            kind: "mftik",
+          },
+          document.getElementById("contact-status")
+        );
+      });
     </script>
   </body>
 </html>
