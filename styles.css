@@ -287,3 +287,32 @@ footer {
 footer .dot {
   margin: 0 0.4rem;
 }
+
+.claim input,
+.contact input,
+.contact textarea {
+  width: 100%;
+  margin: 0 0 0.55rem;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+}
+
+.contact textarea {
+  resize: vertical;
+  min-height: 7rem;
+}
+
+.claim .cta,
+.contact .btn {
+  margin-top: 0.2rem;
+}
+
+.form-status {
+  margin: 0.6rem 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
