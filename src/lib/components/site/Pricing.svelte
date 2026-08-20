@@ -22,7 +22,7 @@
 			await submitContact({
 				name: claimName.trim(),
 				email: claimEmail.trim(),
-				message: `Request access for ${preview} (Standard — early access 100 USDT/month; list 300 USDT/month; 200U off permanent).`,
+				message: `Request access for ${preview} (Standard — early access $100/month; list $300/month; $200 off permanent).`,
 				kind: 'mftik'
 			});
 			claimStatus = 'Sent. We’ll write back.';
@@ -88,10 +88,10 @@
 				<Card.Header>
 					<Card.Title class="font-mono text-sm tracking-[0.12em] uppercase">Standard</Card.Title>
 					<p class="font-mono text-2xl text-foreground">
-						100U <span class="text-sm text-muted-foreground">per month</span>
+						$100 <span class="text-sm text-muted-foreground">per month</span>
 					</p>
 					<p class="font-mono text-xs text-muted-foreground">
-						USDT · early access · list <span class="line-through">300U</span> · 200U off, locked in
+						USD · early access · list <span class="line-through">$300</span> · $200 off, locked in
 						permanently
 					</p>
 					<Card.Description>
