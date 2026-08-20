@@ -22,7 +22,7 @@
 			await submitContact({
 				name: claimName.trim(),
 				email: claimEmail.trim(),
-				message: `Request access for ${preview} ($30/month hosted instance).`,
+				message: `Request access for ${preview} (Standard — early access 200 USDT/month; list 300 USDT/month).`,
 				kind: 'mftik'
 			});
 			claimStatus = 'Sent. We’ll write back.';
@@ -49,7 +49,7 @@
 			<p class="mb-2 font-mono text-[0.68rem] uppercase tracking-[0.2em] text-steel">Pricing</p>
 			<h2 class="text-2xl font-medium tracking-tight text-foreground md:text-3xl">Plans</h2>
 			<p class="mt-3 text-muted-foreground">
-				Run it yourself, or claim a hosted box and stay on strategy.
+				Run it yourself, or take Standard and stay on strategy.
 			</p>
 		</div>
 
@@ -86,11 +86,13 @@
 				class="flex flex-col rounded-sm border-primary/50 bg-card shadow-none ring-1 ring-primary/20"
 			>
 				<Card.Header>
-					<Card.Title class="font-mono text-sm tracking-[0.12em] uppercase"
-						>Claim an instance</Card.Title
-					>
+					<Card.Title class="font-mono text-sm tracking-[0.12em] uppercase">Standard</Card.Title>
 					<p class="font-mono text-2xl text-foreground">
-						$30 <span class="text-sm text-muted-foreground">per month</span>
+						200U <span class="text-sm text-muted-foreground">per month</span>
+					</p>
+					<p class="font-mono text-xs text-muted-foreground">
+						USDT · early access · list <span class="line-through">300U</span> · 100U off, locked in
+						permanently
 					</p>
 					<Card.Description>
 						For traders who already know MFTIK and want to focus on strategy R&amp;D. We run the
@@ -99,8 +101,8 @@
 				</Card.Header>
 				<Card.Content class="flex-1 space-y-3">
 					<ul class="mb-4 space-y-2 text-sm text-muted-foreground">
-						<li>Hosted in Asia Pacific · one owner, one box</li>
-						<li>Scheduled strategies from the MFTIK team</li>
+						<li>One owner, one box</li>
+						<li>Regularly shared community strategies</li>
 						<li>4-core / 8GB server</li>
 						<li>We operate it and ship version updates</li>
 					</ul>
