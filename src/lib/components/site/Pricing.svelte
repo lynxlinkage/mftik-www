@@ -49,7 +49,7 @@
 			<p class="mb-2 font-mono text-[0.68rem] uppercase tracking-[0.2em] text-steel">Pricing</p>
 			<h2 class="text-2xl font-medium tracking-tight text-foreground md:text-3xl">Plans</h2>
 			<p class="mt-3 text-muted-foreground">
-				Start on your machine. Pay when you want us to host it.
+				Run it yourself, or claim a hosted box and stay on strategy.
 			</p>
 		</div>
 
@@ -59,14 +59,15 @@
 					<Card.Title class="font-mono text-sm tracking-[0.12em] uppercase">Self-host</Card.Title>
 					<p class="font-mono text-2xl text-foreground">Free</p>
 					<Card.Description>
-						The same platform, on your hardware. You keep the keys, the data, and the ops.
+						For people starting with MFTIK, and hobbyists who can operate the stack. Same platform on
+						your hardware — you keep the keys, the data, and the ops.
 					</Card.Description>
 				</Card.Header>
 				<Card.Content class="flex-1">
 					<ul class="space-y-2 text-sm text-muted-foreground">
 						<li>Paper trading and strategy deploy</li>
 						<li>Control UI</li>
-						<li>You run the stack</li>
+						<li>Support on Discord</li>
 					</ul>
 				</Card.Content>
 				<Card.Footer>
@@ -92,8 +93,8 @@
 						$30 <span class="text-sm text-muted-foreground">per month</span>
 					</p>
 					<Card.Description>
-						We run it. You pick a name. That name becomes your address. Reservation request — not
-						checkout.
+						For traders who already know MFTIK and want to focus on strategy R&amp;D. We run the
+						instance and TradeOps — you don’t operate the box. Reservation request — not checkout.
 					</Card.Description>
 				</Card.Header>
 				<Card.Content class="flex-1 space-y-3">
@@ -169,7 +170,8 @@
 					<Card.Title class="font-mono text-sm tracking-[0.12em] uppercase">Custom</Card.Title>
 					<p class="font-mono text-2xl text-foreground">Contact us</p>
 					<Card.Description>
-						Extra regions, seats, live venue keys, or a box that does not look like the public plan.
+						For teams that need a footprint beyond the public plan — regions, seats, live venue keys.
+						Talk first.
 					</Card.Description>
 				</Card.Header>
 				<Card.Content class="flex-1">
