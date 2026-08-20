@@ -83,16 +83,41 @@ export function initMotion(): () => void {
 
 		const loop = document.querySelector('[data-arch-loop]');
 		if (loop) {
-			gsap.from('[data-arch-figure]', {
+			gsap.from('[data-arch-copy]', {
+				scrollTrigger: {
+					trigger: loop,
+					start: 'top 75%',
+					toggleActions: 'play none none reverse'
+				},
+				opacity: 0,
+				x: -18,
+				duration: 0.7,
+				ease: 'power3.out'
+			});
+
+			gsap.from('[data-arch-node]', {
 				scrollTrigger: {
 					trigger: loop,
 					start: 'top 70%',
 					toggleActions: 'play none none reverse'
 				},
 				opacity: 0,
-				y: 24,
+				y: 16,
+				stagger: 0.1,
+				duration: 0.55,
+				ease: 'power2.out'
+			});
+
+			gsap.from('[data-arch-publish], [data-arch-link], [data-arch-trace]', {
+				scrollTrigger: {
+					trigger: loop,
+					start: 'top 70%',
+					toggleActions: 'play none none reverse'
+				},
+				opacity: 0,
 				duration: 0.8,
-				ease: 'power3.out'
+				delay: 0.15,
+				ease: 'power2.out'
 			});
 		}
 
