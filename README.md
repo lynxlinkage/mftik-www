@@ -20,12 +20,12 @@ npm run preview
 
 ## Forms
 
-Claim and contact forms `POST` JSON to `https://lynxlinkage.com/api/v1/contact` with `kind: "mftik"`. Live CORS already allows `https://mftik.com`.
+Standard and contact forms `POST` JSON to `https://lynxlinkage.com/api/v1/contact` with `kind: "mftik"`. Live CORS already allows `https://mftik.com`.
 
-- Claim: `{ name, email, message: "Request access for {slug}.mftik.app ($30/month hosted instance).", kind: "mftik" }`
+- Standard: `{ name, email, message: "Request access for {slug}.mftik.app (Standard — early access $100/month; list $300/month; $200 off permanent).", kind: "mftik" }`
 - Contact: `{ name, email, company?, message, kind: "mftik" }`
 
-Claim is a reservation/request only — no Stripe, no auto-provision.
+Standard is a reservation/request only — no Stripe, no auto-provision.
 
 Self-host questions: [github.com/lynxlinkage/mftik/issues](https://github.com/lynxlinkage/mftik/issues).
 

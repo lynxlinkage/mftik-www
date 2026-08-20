@@ -36,11 +36,11 @@
 				Mid-frequency algo trading
 			</p>
 			<h1 class="mb-5 text-balance text-3xl font-medium leading-[1.1] tracking-tight text-foreground sm:text-4xl md:text-5xl">
-				Your own instance.<br />Nobody else on it.
+				Not only develop — TradeOps included.
 			</h1>
 			<p class="mb-8 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
-				Paper trading, strategy deploy, and the control UI. Run it yourself, or we run a box that is
-				only yours.
+				Develop a strategy remotely, publish it to the host, and the instance runs it. Behind the API
+				Layer: Strategy, Market Domain, and Trading Domain — deploy, run, observe, operate.
 			</p>
 			<div class="flex flex-wrap gap-3">
 				<Button href="#pricing" size="lg" class="min-w-32 font-mono tracking-wide">See plans</Button>

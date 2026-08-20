@@ -1,10 +1,10 @@
 <script lang="ts">
 	const lines = [
-		{ t: 'boot', m: 'mftik control plane — single-tenant' },
-		{ t: 'bind', m: 'owner session established' },
-		{ t: 'load', m: 'paper venue · strategy runner · UI' },
-		{ t: 'watch', m: 'heartbeat OK · no shared neighbors' },
-		{ t: 'hold', m: 'stable loop — continue' }
+		{ t: 'boot', m: 'mftik host — TradeOps online' },
+		{ t: 'bind', m: 'remote session · strategy workspace' },
+		{ t: 'pub', m: 'publish → API Layer → Strategy' },
+		{ t: 'link', m: 'Market Domain · Trading Domain' },
+		{ t: 'ops', m: 'deploy · run · observe · operate' }
 	];
 </script>
 
@@ -13,11 +13,11 @@
 		<div class="mb-8 max-w-2xl">
 			<p class="mb-2 font-mono text-[0.68rem] uppercase tracking-[0.2em] text-steel">Observatory</p>
 			<h2 class="text-2xl font-medium tracking-tight text-foreground md:text-3xl">
-				One box. Continuous signal.
+				From publish to ops.
 			</h2>
 			<p class="mt-3 max-w-xl text-muted-foreground">
-				The surface reads like a terminal because the product is meant to stay under your control —
-				not a shared dashboard crowded with other tenants.
+				Typical frameworks stop at develop. Here the terminal stays open through deploy, run, and
+				observe — TradeOps on the same mid-frequency stack.
 			</p>
 		</div>
 

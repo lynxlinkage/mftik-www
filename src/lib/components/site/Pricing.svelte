@@ -22,7 +22,7 @@
 			await submitContact({
 				name: claimName.trim(),
 				email: claimEmail.trim(),
-				message: `Request access for ${preview} ($30/month hosted instance).`,
+				message: `Request access for ${preview} (Standard — early access $100/month; list $300/month; $200 off permanent).`,
 				kind: 'mftik'
 			});
 			claimStatus = 'Sent. We’ll write back.';
@@ -49,7 +49,7 @@
 			<p class="mb-2 font-mono text-[0.68rem] uppercase tracking-[0.2em] text-steel">Pricing</p>
 			<h2 class="text-2xl font-medium tracking-tight text-foreground md:text-3xl">Plans</h2>
 			<p class="mt-3 text-muted-foreground">
-				Start on your machine. Pay when you want us to host it.
+				Run it yourself, or take Standard and stay on strategy.
 			</p>
 		</div>
 
@@ -59,14 +59,15 @@
 					<Card.Title class="font-mono text-sm tracking-[0.12em] uppercase">Self-host</Card.Title>
 					<p class="font-mono text-2xl text-foreground">Free</p>
 					<Card.Description>
-						The same platform, on your hardware. You keep the keys, the data, and the ops.
+						For people starting with MFTIK, and hobbyists who can operate the stack. Same platform on
+						your hardware — you keep the keys, the data, and the ops.
 					</Card.Description>
 				</Card.Header>
 				<Card.Content class="flex-1">
 					<ul class="space-y-2 text-sm text-muted-foreground">
 						<li>Paper trading and strategy deploy</li>
 						<li>Control UI</li>
-						<li>You run the stack</li>
+						<li>Support on Discord</li>
 					</ul>
 				</Card.Content>
 				<Card.Footer>
@@ -85,22 +86,25 @@
 				class="flex flex-col rounded-sm border-primary/50 bg-card shadow-none ring-1 ring-primary/20"
 			>
 				<Card.Header>
-					<Card.Title class="font-mono text-sm tracking-[0.12em] uppercase"
-						>Claim an instance</Card.Title
-					>
+					<Card.Title class="font-mono text-sm tracking-[0.12em] uppercase">Standard</Card.Title>
 					<p class="font-mono text-2xl text-foreground">
-						$30 <span class="text-sm text-muted-foreground">per month</span>
+						$100 <span class="text-sm text-muted-foreground">per month</span>
+					</p>
+					<p class="font-mono text-xs text-muted-foreground">
+						USD · early access · list <span class="line-through">$300</span> · $200 off, locked in
+						permanently
 					</p>
 					<Card.Description>
-						We run it. You pick a name. That name becomes your address. Reservation request — not
-						checkout.
+						For traders who already know MFTIK and want to focus on strategy R&amp;D. We run the
+						instance and TradeOps — you don’t operate the box. Reservation request — not checkout.
 					</Card.Description>
 				</Card.Header>
 				<Card.Content class="flex-1 space-y-3">
 					<ul class="mb-4 space-y-2 text-sm text-muted-foreground">
-						<li>Hosted in Asia Pacific</li>
 						<li>One owner, one box</li>
-						<li>Paper, strategies, control UI</li>
+						<li>Regularly shared community strategies</li>
+						<li>4-core / 8GB server</li>
+						<li>We operate it and ship version updates</li>
 					</ul>
 					<form class="space-y-3" onsubmit={onClaim}>
 						<div class="space-y-1.5">
@@ -169,14 +173,15 @@
 					<Card.Title class="font-mono text-sm tracking-[0.12em] uppercase">Custom</Card.Title>
 					<p class="font-mono text-2xl text-foreground">Contact us</p>
 					<Card.Description>
-						Extra regions, seats, live venue keys, or a box that does not look like the public plan.
+						For companies that need ops shaped to their footprint, and strategies built for their
+						book. Talk first.
 					</Card.Description>
 				</Card.Header>
 				<Card.Content class="flex-1">
 					<ul class="space-y-2 text-sm text-muted-foreground">
-						<li>Quoted separately</li>
-						<li>Not self-serve</li>
-						<li>Talk first</li>
+						<li>Customized ops — VPC and/or distributed deploy</li>
+						<li>We help customize the strategies you need</li>
+						<li>Quoted separately · not self-serve</li>
 					</ul>
 				</Card.Content>
 				<Card.Footer>
