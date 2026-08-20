@@ -83,27 +83,16 @@ export function initMotion(): () => void {
 
 		const loop = document.querySelector('[data-arch-loop]');
 		if (loop) {
-			gsap.to('[data-arch-node]', {
+			gsap.from('[data-arch-figure]', {
 				scrollTrigger: {
 					trigger: loop,
 					start: 'top 70%',
 					toggleActions: 'play none none reverse'
 				},
-				boxShadow: '0 0 0 1px color-mix(in oklab, var(--primary) 55%, transparent)',
-				duration: 0.6,
-				stagger: 0.12,
-				ease: 'power2.out'
-			});
-
-			gsap.to('[data-arch-pulse]', {
-				scrollTrigger: {
-					trigger: loop,
-					start: 'top 70%',
-					end: 'bottom top',
-					scrub: 0.6
-				},
-				strokeDashoffset: 0,
-				ease: 'none'
+				opacity: 0,
+				y: 24,
+				duration: 0.8,
+				ease: 'power3.out'
 			});
 		}
 

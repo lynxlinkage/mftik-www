@@ -6,15 +6,25 @@
 	import Pricing from '$lib/components/site/Pricing.svelte';
 	import Contact from '$lib/components/site/Contact.svelte';
 	import Footer from '$lib/components/site/Footer.svelte';
+
+	const title = 'MFTIK — Mid-frequency algo trading with TradeOps';
+	const description =
+		'MFTIK is a mid-frequency algo stack with TradeOps built in — develop strategies remotely, publish them to a host, and run them. One instance.';
 </script>
 
 <svelte:head>
-	<title>MFTIK — Your own trading instance</title>
-	<meta
-		name="description"
-		content="Mid-frequency algo trading. Self-host free, or claim a hosted instance for $30/month. Paper trading, strategy deploy, control UI."
-	/>
+	<title>{title}</title>
+	<meta name="description" content={description} />
 	<link rel="canonical" href="https://mftik.com/" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://mftik.com/" />
+	<meta property="og:title" content={title} />
+	<meta property="og:description" content={description} />
+	<meta property="og:image" content="https://mftik.com/mft-logo.png" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content={title} />
+	<meta name="twitter:description" content={description} />
+	<meta name="twitter:image" content="https://mftik.com/mft-logo.png" />
 </svelte:head>
 
 <Header />
