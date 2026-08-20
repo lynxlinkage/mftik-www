@@ -46,7 +46,7 @@
 <section id="pricing" class="border-t border-border/60 bg-background/40 scroll-mt-20">
 	<div class="mx-auto max-w-6xl px-5 py-16 md:py-24">
 		<div class="mb-10 max-w-2xl" data-reveal>
-			<p class="mb-2 font-mono text-[0.68rem] uppercase tracking-[0.2em] text-steel">Plans</p>
+			<p class="mb-2 font-mono text-[0.68rem] uppercase tracking-[0.2em] text-steel">Pricing</p>
 			<h2 class="text-2xl font-medium tracking-tight text-foreground md:text-3xl">Plans</h2>
 			<p class="mt-3 text-muted-foreground">
 				Start on your machine. Pay when you want us to host it.
