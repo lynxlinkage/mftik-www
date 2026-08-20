@@ -13,6 +13,9 @@
 			<Button href="#pricing" variant="ghost" size="sm" class="font-mono text-xs tracking-wide text-muted-foreground">
 				Pricing
 			</Button>
+			<Button href="https://docs.mftik.com/" variant="ghost" size="sm" class="font-mono text-xs tracking-wide text-muted-foreground">
+				Docs
+			</Button>
 			<Button href="#contact" variant="ghost" size="sm" class="font-mono text-xs tracking-wide text-muted-foreground">
 				Request demo
 			</Button>
