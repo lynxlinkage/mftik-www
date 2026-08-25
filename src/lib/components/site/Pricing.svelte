@@ -116,12 +116,19 @@
 						<li>Paper trading and strategy deploy</li>
 						<li>Control UI</li>
 						<li>
-							Support via
-							<a class="text-primary underline-offset-4 hover:underline" href="#contact">contact form</a>
+							<a
+								class="text-primary underline-offset-4 hover:underline"
+								href="https://discord.gg/WekYAb43Hj"
+								target="_blank"
+								rel="noreferrer"
+								>Support on Discord</a
+							>
 							or
 							<a
 								class="text-primary underline-offset-4 hover:underline"
 								href="https://github.com/lynxlinkage/mftik/issues"
+								target="_blank"
+								rel="noreferrer"
 								>GitHub issues</a
 							>
 						</li>

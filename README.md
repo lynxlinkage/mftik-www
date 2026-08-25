@@ -27,7 +27,7 @@ Standard and contact forms `POST` JSON to `https://lynxlinkage.com/api/v1/contac
 
 Standard is a reservation/request only — no Stripe, no auto-provision. The optional `slug` field is the preferred `*.mftik.app` label (charset `[a-z0-9]([a-z0-9-]*[a-z0-9])?`, length 3–32, reserved names rejected in the browser). Submitting does not claim a live hostname.
 
-Self-host support: contact form (`#contact`) or [github.com/lynxlinkage/mftik/issues](https://github.com/lynxlinkage/mftik/issues).
+Self-host support: [Discord](https://discord.gg/WekYAb43Hj) or [GitHub issues](https://github.com/lynxlinkage/mftik/issues).
 
 ## GitHub Pages
 
