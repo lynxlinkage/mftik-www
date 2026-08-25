@@ -26,7 +26,7 @@
 			id: 'support',
 			label: 'Support',
 			title: 'Help running the stack',
-			body: 'Stuck on deploy, ops, or a hosted box? Write here. Self-host questions can still go to GitHub issues.'
+			body: 'Stuck on deploy, ops, or a hosted box? Write here. Self-host questions are best on Discord.'
 		}
 	];
 
@@ -120,7 +120,17 @@
 									Self-host:
 									<a
 										class="text-primary underline-offset-4 hover:underline"
+										href="https://discord.gg/WekYAb43Hj"
+										target="_blank"
+										rel="noreferrer"
+										>Support on Discord</a
+									>
+									or
+									<a
+										class="text-primary underline-offset-4 hover:underline"
 										href="https://github.com/lynxlinkage/mftik/issues"
+										target="_blank"
+										rel="noreferrer"
 										>GitHub issues</a
 									>.
 								</p>
