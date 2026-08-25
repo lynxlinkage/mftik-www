@@ -6,6 +6,8 @@ export type ContactPayload = {
 	message: string;
 	kind: 'mftik';
 	company?: string;
+	/** Preferred `*.mftik.app` label for Standard reservations (optional). */
+	slug?: string;
 };
 
 export async function submitContact(payload: ContactPayload): Promise<void> {

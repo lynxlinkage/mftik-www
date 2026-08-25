@@ -4,42 +4,90 @@
 	import { Input } from '$lib/components/ui/input/index.js';
 	import { Label } from '$lib/components/ui/label/index.js';
 	import { submitContact } from '$lib/api/contact';
-	import { instanceHost, slugify } from '$lib/utils/slug';
+	import {
+		SLUG_MAX_LENGTH,
+		SLUG_MIN_LENGTH,
+		SLUG_PATTERN,
+		instanceHost,
+		isReservedSlug,
+		isValidSlug,
+		slugify,
+		slugifyInput
+	} from '$lib/utils/slug';
 
 	let slug = $state('your-name');
-	let claimName = $state('');
-	let claimEmail = $state('');
-	let claimStatus = $state('');
-	let claimBusy = $state(false);
+	let requestName = $state('');
+	let requestEmail = $state('');
+	let requestStatus = $state('');
+	let requestBusy = $state(false);
+	let slugEl = $state<HTMLInputElement | null>(null);
 
 	const preview = $derived(instanceHost(slug));
 
-	async function onClaim(e: Event) {
+	function setSlugValidity(el: HTMLInputElement, value: string) {
+		const normalized = slugify(value);
+		if (!normalized) {
+			el.setCustomValidity('Enter an instance name (at least 3 characters).');
+		} else if (normalized.length < SLUG_MIN_LENGTH) {
+			el.setCustomValidity(`Use at least ${SLUG_MIN_LENGTH} characters.`);
+		} else if (isReservedSlug(normalized)) {
+			el.setCustomValidity('That name is reserved. Choose another.');
+		} else if (!isValidSlug(normalized)) {
+			el.setCustomValidity('Use lowercase letters, numbers, and hyphens (3–32 characters).');
+		} else {
+			el.setCustomValidity('');
+		}
+	}
+
+	async function onRequestAccess(e: Event) {
 		e.preventDefault();
-		claimBusy = true;
-		claimStatus = 'Sending…';
+		const form = e.currentTarget as HTMLFormElement;
+		const normalized = slugify(slug);
+		slug = normalized || '';
+		if (slugEl) {
+			slugEl.value = slug;
+			setSlugValidity(slugEl, slug);
+		}
+		if (!isValidSlug(normalized) || !form.checkValidity()) {
+			form.reportValidity();
+			return;
+		}
+
+		requestBusy = true;
+		requestStatus = 'Sending…';
 		try {
 			await submitContact({
-				name: claimName.trim(),
-				email: claimEmail.trim(),
-				message: `Request access for ${preview} (Standard — early access $100/month; list $300/month; $200 off permanent).`,
-				kind: 'mftik'
+				name: requestName.trim(),
+				email: requestEmail.trim(),
+				message: `Request access for ${normalized}.mftik.app (Standard — early access $100/month; list $300/month; $200 off permanent).`,
+				kind: 'mftik',
+				slug: normalized
 			});
-			claimStatus = 'Sent. We’ll write back.';
+			requestStatus = 'Sent. We’ll write back.';
 		} catch (err) {
-			claimStatus = err instanceof Error ? err.message : 'Could not send';
+			requestStatus = err instanceof Error ? err.message : 'Could not send';
 		} finally {
-			claimBusy = false;
+			requestBusy = false;
 		}
 	}
 
 	function onSlugInput(e: Event) {
-		const value = (e.currentTarget as HTMLInputElement).value;
-		slug = value;
+		const el = e.currentTarget as HTMLInputElement;
+		const next = slugifyInput(el.value);
+		slug = next;
+		if (el.value !== next) {
+			el.value = next;
+		}
+		setSlugValidity(el, next);
 	}
 
 	function onSlugBlur() {
-		slug = slugify(slug) || 'your-name';
+		const normalized = slugify(slug);
+		slug = normalized;
+		if (slugEl) {
+			slugEl.value = normalized;
+			setSlugValidity(slugEl, normalized);
+		}
 	}
 </script>
 
@@ -67,7 +115,16 @@
 					<ul class="space-y-2 text-sm text-muted-foreground">
 						<li>Paper trading and strategy deploy</li>
 						<li>Control UI</li>
-						<li>Support on Discord</li>
+						<li>
+							Support via
+							<a class="text-primary underline-offset-4 hover:underline" href="#contact">contact form</a>
+							or
+							<a
+								class="text-primary underline-offset-4 hover:underline"
+								href="https://github.com/lynxlinkage/mftik/issues"
+								>GitHub issues</a
+							>
+						</li>
 					</ul>
 				</Card.Content>
 				<Card.Footer>
@@ -106,7 +163,7 @@
 						<li>4-core / 8GB server</li>
 						<li>We operate it and ship version updates</li>
 					</ul>
-					<form class="space-y-3" onsubmit={onClaim}>
+					<form class="space-y-3" onsubmit={onRequestAccess}>
 						<div class="space-y-1.5">
 							<Label for="slug" class="font-mono text-[0.7rem] uppercase tracking-wide"
 								>Instance name</Label
@@ -120,8 +177,12 @@
 									class="min-w-0 flex-1 bg-transparent font-mono text-sm outline-none"
 									autocomplete="off"
 									spellcheck="false"
-									maxlength="32"
+									minlength={SLUG_MIN_LENGTH}
+									maxlength={SLUG_MAX_LENGTH}
+									pattern={SLUG_PATTERN}
 									required
+									title="Lowercase letters, numbers, and hyphens; 3–32 characters. Not a live claim."
+									bind:this={slugEl}
 									value={slug}
 									oninput={onSlugInput}
 									onblur={onSlugBlur}
@@ -131,13 +192,17 @@
 							<p class="text-xs text-muted-foreground">
 								Your instance would be <code class="text-foreground">{preview}</code>
 							</p>
+							<p class="text-xs text-muted-foreground">
+								Reservation note — we write back. This does not claim a live
+								<code class="text-foreground">*.mftik.app</code> name.
+							</p>
 						</div>
 						<div class="space-y-1.5">
-							<Label for="claim-name" class="sr-only">Your name</Label>
+							<Label for="request-name" class="sr-only">Your name</Label>
 							<Input
-								id="claim-name"
+								id="request-name"
 								name="name"
-								bind:value={claimName}
+								bind:value={requestName}
 								minlength={2}
 								maxlength={120}
 								placeholder="Your name"
@@ -146,23 +211,23 @@
 							/>
 						</div>
 						<div class="space-y-1.5">
-							<Label for="claim-email" class="sr-only">Email</Label>
+							<Label for="request-email" class="sr-only">Email</Label>
 							<Input
-								id="claim-email"
+								id="request-email"
 								name="email"
 								type="email"
-								bind:value={claimEmail}
+								bind:value={requestEmail}
 								maxlength={254}
 								placeholder="you@example.com"
 								required
 								class="rounded-sm font-mono"
 							/>
 						</div>
-						<Button type="submit" class="w-full font-mono tracking-wide" disabled={claimBusy}>
+						<Button type="submit" class="w-full font-mono tracking-wide" disabled={requestBusy}>
 							Request access
 						</Button>
-						{#if claimStatus}
-							<p class="text-sm text-muted-foreground" role="status">{claimStatus}</p>
+						{#if requestStatus}
+							<p class="text-sm text-muted-foreground" role="status">{requestStatus}</p>
 						{/if}
 					</form>
 				</Card.Content>
